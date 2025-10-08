@@ -1,30 +1,35 @@
 <template>
   <Layout>
-    <div class="relative flex flex-col bg-[#111827] dark group/design-root overflow-x-hidden">
-      <div class="px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-12">
+    <div class="relative flex flex-col bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a] dark group/design-root overflow-x-hidden">
+      <ThreeBackground />
+      <div class="relative z-10 px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-12">
         <div class="layout-content-container flex flex-col max-w-7xl flex-1">
           <!-- Hero Section -->
           <div class="@container">
             <div class="@[480px]:p-4">
-              <div class="flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-2xl items-center justify-center p-8 text-center" :style="heroBackgroundStyle">
-                <div class="flex flex-col gap-4 max-w-3xl">
-                  <h1 class="text-white text-5xl font-black leading-tight tracking-tight @[480px]:text-6xl">
+              <div class="flex min-h-[600px] flex-col gap-6 bg-gradient-to-br from-gray-900/40 via-transparent to-gray-900/40 backdrop-blur-sm @[480px]:gap-8 @[480px]:rounded-3xl items-center justify-center p-12 text-center border border-gray-800/30 shadow-2xl">
+                <div class="flex flex-col gap-6 max-w-4xl animate-float">
+                  <div class="inline-block mx-auto px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/20 to-green-600/20 border border-[#53d22d]/30 mb-4">
+                    <span class="text-[#53d22d] text-sm font-bold tracking-wide">NEXT-GENERATION GAMING PLATFORM</span>
+                  </div>
+                  <h1 class="text-white text-6xl md:text-7xl font-black leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-white">
                     Complete iGaming Platform for All Gaming Services
                   </h1>
-                  <h2 class="text-gray-300 text-lg font-normal leading-normal @[480px]:text-xl">
+                  <h2 class="text-gray-300 text-xl font-normal leading-relaxed">
                     Launch lottery, casino, sports betting, and more. Complete white-label solution with full management dashboard for every gaming vertical.
                   </h2>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
-                  <router-link 
+                  <router-link
                     to="/demo"
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 @[480px]:h-14 @[480px]:px-10 bg-[#53d22d] text-gray-900 text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-lg hover:bg-green-400 transition-transform transform hover:scale-105"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-10 bg-gradient-to-r from-[#53d22d] to-green-500 text-gray-900 text-lg font-bold leading-normal tracking-[0.015em] hover:shadow-2xl hover:shadow-[#53d22d]/50 transition-all duration-300 transform hover:scale-105 animate-glow"
                   >
                     <span class="truncate">Request a Demo</span>
+                    <span class="material-symbols-outlined ml-2">arrow_forward</span>
                   </router-link>
-                  <router-link 
+                  <router-link
                     to="/pricing"
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-8 @[480px]:h-14 @[480px]:px-10 bg-transparent border-2 border-white text-white text-base font-bold leading-normal tracking-[0.015em] @[480px]:text-lg hover:bg-white hover:text-gray-900 transition-colors"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-10 bg-transparent border-2 border-white/30 text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-white/10 hover:border-white transition-all duration-300 backdrop-blur-sm"
                   >
                     <span class="truncate">View Pricing</span>
                   </router-link>
@@ -34,49 +39,47 @@
           </div>
           
           <!-- Gaming Services Overview -->
-          <div class="py-16 px-4">
-            <div class="text-center mb-12">
-              <h2 class="text-white text-4xl font-bold leading-tight tracking-tight mb-4">Our Gaming Services</h2>
-              <p class="text-gray-400 text-lg max-w-3xl mx-auto">Complete range of gaming solutions for every market segment - Lottery, Casino, Sports Betting and more</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div 
-                v-for="service in gamingServices" 
-                :key="service.id"
-                class="flex flex-col items-center text-center gap-4 rounded-xl border border-gray-800 bg-gray-900 p-6 hover:bg-gray-800/50 transition-colors"
-              >
-                <span class="material-symbols-outlined text-[#53d22d] text-4xl">{{ service.icon }}</span>
-                <div>
-                  <h3 class="text-white text-xl font-bold leading-tight mb-2">{{ service.title }}</h3>
-                  <p class="text-gray-400">{{ service.description }}</p>
-                </div>
+          <div class="py-20 px-4">
+            <div class="text-center mb-16">
+              <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-6">
+                <span class="text-[#53d22d] text-sm font-bold tracking-wide">GAMING SERVICES</span>
               </div>
+              <h2 class="text-white text-5xl font-black leading-tight tracking-tight mb-6">Our Gaming Services</h2>
+              <p class="text-gray-300 text-xl max-w-3xl mx-auto">Complete range of gaming solutions for every market segment</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <FloatingCard
+                v-for="service in gamingServices"
+                :key="service.id"
+                :icon="service.icon"
+                :title="service.title"
+                :description="service.description"
+              />
             </div>
           </div>
           
           <!-- Key Features Preview -->
-          <div class="py-16 px-4">
-            <div class="text-center mb-12">
-              <h2 class="text-white text-4xl font-bold leading-tight tracking-tight mb-4">Why Choose Numbola?</h2>
-              <p class="text-gray-400 text-lg max-w-3xl mx-auto">Just like Shopify for e-commerce, Numbola provides everything you need to run a successful online gaming business.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div 
-                v-for="feature in platformFeatures" 
-                :key="feature.id"
-                class="flex flex-col items-center text-center gap-4 rounded-xl border border-gray-800 bg-gray-900 p-6 hover:bg-gray-800/50 transition-colors"
-              >
-                <span class="material-symbols-outlined text-[#53d22d] text-4xl">{{ feature.icon }}</span>
-                <div>
-                  <h3 class="text-white text-xl font-bold leading-tight mb-2">{{ feature.title }}</h3>
-                  <p class="text-gray-400">{{ feature.description }}</p>
-                </div>
+          <div class="py-20 px-4">
+            <div class="text-center mb-16">
+              <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-6">
+                <span class="text-[#53d22d] text-sm font-bold tracking-wide">PLATFORM FEATURES</span>
               </div>
+              <h2 class="text-white text-5xl font-black leading-tight tracking-tight mb-6">Why Choose Numbola?</h2>
+              <p class="text-gray-300 text-xl max-w-3xl mx-auto">Just like Shopify for e-commerce, Numbola provides everything you need to run a successful online gaming business.</p>
             </div>
-            <div class="text-center mt-8">
-              <router-link 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <FloatingCard
+                v-for="feature in platformFeatures"
+                :key="feature.id"
+                :icon="feature.icon"
+                :title="feature.title"
+                :description="feature.description"
+              />
+            </div>
+            <div class="text-center mt-12">
+              <router-link
                 to="/features"
-                class="inline-flex items-center px-6 py-3 bg-[#53d22d] text-gray-900 font-bold rounded-lg hover:bg-green-400 transition-colors"
+                class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#53d22d] to-green-500 text-gray-900 font-bold rounded-xl hover:shadow-2xl hover:shadow-[#53d22d]/50 transition-all duration-300 transform hover:scale-105"
               >
                 View All Features
                 <span class="material-symbols-outlined ml-2">arrow_forward</span>
@@ -85,37 +88,38 @@
           </div>
           
           <!-- Stats Section -->
-          <div class="py-16 px-4 bg-gray-900/50 rounded-2xl">
-            <div class="text-center mb-12">
-              <h2 class="text-white text-4xl font-bold leading-tight tracking-tight mb-4">Trusted by Industry Leaders</h2>
+          <div class="py-20 px-4 bg-gradient-to-br from-gray-900/60 via-[#53d22d]/5 to-gray-900/60 backdrop-blur-md rounded-3xl border border-gray-800/50 shadow-2xl">
+            <div class="text-center mb-16">
+              <h2 class="text-white text-5xl font-black leading-tight tracking-tight mb-4">Trusted by Industry Leaders</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div 
-                v-for="stat in stats" 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div
+                v-for="stat in stats"
                 :key="stat.id"
-                class="text-center"
+                class="text-center transform hover:scale-110 transition-all duration-300"
               >
-                <div class="text-[#53d22d] text-4xl font-bold mb-2">{{ stat.number }}</div>
-                <div class="text-gray-400 text-lg">{{ stat.label }}</div>
+                <div class="text-[#53d22d] text-6xl font-black mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[#53d22d] to-green-400">{{ stat.number }}</div>
+                <div class="text-gray-300 text-xl font-medium">{{ stat.label }}</div>
               </div>
             </div>
           </div>
           
           <!-- CTA Section -->
-          <div class="py-16 px-4 bg-gradient-to-r from-[#53d22d]/20 to-green-600/20 rounded-2xl mt-16">
-            <div class="max-w-4xl mx-auto text-center">
-              <h2 class="text-white text-4xl font-bold leading-tight tracking-tight mb-4">Ready to Start Your Gaming Business?</h2>
-              <p class="text-gray-300 text-lg mb-8">Join hundreds of successful operators who chose Numbola to power their gaming platforms.</p>
-              <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <router-link 
+          <div class="relative py-20 px-8 bg-gradient-to-br from-[#53d22d]/20 via-green-600/20 to-[#53d22d]/20 rounded-3xl mt-20 overflow-hidden border border-[#53d22d]/30 shadow-2xl">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM1M2QyMmQiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzAtMC41NTIuNDQ4LTEgMS0xaDEyYy41NTIgMCAxIC40NDggMSAxdjEyYzAgLjU1Mi0uNDQ4IDEtMSAxSDM3Yy0uNTUyIDAtMS0uNDQ4LTEtMXYtMTJ6TTAgMTRjMC0uNTUyLjQ0OC0xIDEtMWgxMmMuNTUyIDAgMSAuNDQ4IDEgMXYxMmMwIC41NTItLjQ0OCAxLTEgMUgxYy0uNTUyIDAtMS0uNDQ4LTEtMXYtMTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center">
+              <h2 class="text-white text-5xl md:text-6xl font-black leading-tight tracking-tight mb-6">Ready to Start Your Gaming Business?</h2>
+              <p class="text-gray-200 text-xl mb-10">Join hundreds of successful operators who chose Numbola to power their gaming platforms.</p>
+              <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <router-link
                   to="/demo"
-                  class="px-8 py-4 bg-[#53d22d] text-gray-900 font-bold rounded-lg hover:bg-green-400 transition-colors"
+                  class="px-10 py-5 bg-gradient-to-r from-[#53d22d] to-green-500 text-gray-900 font-bold rounded-xl hover:shadow-2xl hover:shadow-[#53d22d]/50 transition-all duration-300 transform hover:scale-105 text-lg"
                 >
                   Start Free Demo
                 </router-link>
-                <router-link 
+                <router-link
                   to="/contact"
-                  class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+                  class="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white hover:text-gray-900 transition-all duration-300 text-lg"
                 >
                   Talk to Sales
                 </router-link>
@@ -130,12 +134,16 @@
 
 <script>
 import Layout from '../components/Layout.vue'
+import ThreeBackground from '../components/ThreeBackground.vue'
+import FloatingCard from '../components/FloatingCard.vue'
 import { useSEO } from '../composables/useSEO.js'
 
 export default {
   name: 'Home',
   components: {
-    Layout
+    Layout,
+    ThreeBackground,
+    FloatingCard
   },
   mounted() {
     const { setSEO } = useSEO()

@@ -1,88 +1,107 @@
 <template>
   <Layout>
-    <div class="px-10 lg:px-20 xl:px-40 py-12 bg-[#111827]">
-      <div class="max-w-7xl mx-auto">
+    <div class="relative px-10 lg:px-20 xl:px-40 py-12 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a]">
+      <ThreeBackground />
+      <div class="relative z-10 max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="text-center mb-16">
-          <h1 class="text-white text-5xl font-black mb-6">Complete Gaming Services</h1>
-          <p class="text-gray-300 text-xl max-w-3xl mx-auto">
+        <div class="text-center mb-20 animate-float">
+          <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-6">
+            <span class="text-[#53d22d] text-sm font-bold tracking-wide">COMPLETE GAMING SERVICES</span>
+          </div>
+          <h1 class="text-white text-6xl md:text-7xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-white">Complete Gaming Services</h1>
+          <p class="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
             From lottery and raffle sites to casino games and sports betting - we provide everything you need for a successful online gaming platform
           </p>
         </div>
 
         <!-- Lottery Features -->
-        <div class="mb-16">
-          <h2 class="text-white text-3xl font-bold mb-8 text-center">Lottery & Raffle Platform</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div 
-              v-for="feature in lotteryFeatures" 
-              :key="feature.id"
-              class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:bg-gray-800/50 transition-colors"
-            >
-              <span class="material-symbols-outlined text-[#53d22d] text-3xl mb-4 block">{{ feature.icon }}</span>
-              <h3 class="text-white text-xl font-bold mb-2">{{ feature.title }}</h3>
-              <p class="text-gray-400">{{ feature.description }}</p>
+        <div class="mb-24">
+          <div class="text-center mb-12">
+            <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-4">
+              <span class="text-[#53d22d] text-sm font-bold tracking-wide">LOTTERY PLATFORM</span>
             </div>
+            <h2 class="text-white text-4xl font-black mb-4">Lottery & Raffle Platform</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FloatingCard
+              v-for="feature in lotteryFeatures"
+              :key="feature.id"
+              :icon="feature.icon"
+              :title="feature.title"
+              :description="feature.description"
+            />
           </div>
         </div>
 
         <!-- Sports Betting Features -->
-        <div class="mb-16">
-          <h2 class="text-white text-3xl font-bold mb-8 text-center">Sports Betting Platform</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div 
-              v-for="feature in sportsBettingFeatures" 
-              :key="feature.id"
-              class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:bg-gray-800/50 transition-colors"
-            >
-              <span class="material-symbols-outlined text-[#53d22d] text-3xl mb-4 block">{{ feature.icon }}</span>
-              <h3 class="text-white text-xl font-bold mb-2">{{ feature.title }}</h3>
-              <p class="text-gray-400">{{ feature.description }}</p>
+        <div class="mb-24">
+          <div class="text-center mb-12">
+            <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-4">
+              <span class="text-[#53d22d] text-sm font-bold tracking-wide">SPORTS BETTING</span>
             </div>
+            <h2 class="text-white text-4xl font-black mb-4">Sports Betting Platform</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FloatingCard
+              v-for="feature in sportsBettingFeatures"
+              :key="feature.id"
+              :icon="feature.icon"
+              :title="feature.title"
+              :description="feature.description"
+            />
           </div>
         </div>
 
         <!-- Casino Gaming Features -->
-        <div class="mb-16">
-          <h2 class="text-white text-3xl font-bold mb-8 text-center">Casino Gaming Platform</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div 
-              v-for="feature in casinoFeatures" 
-              :key="feature.id"
-              class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:bg-gray-800/50 transition-colors"
-            >
-              <span class="material-symbols-outlined text-[#53d22d] text-3xl mb-4 block">{{ feature.icon }}</span>
-              <h3 class="text-white text-xl font-bold mb-2">{{ feature.title }}</h3>
-              <p class="text-gray-400">{{ feature.description }}</p>
+        <div class="mb-24">
+          <div class="text-center mb-12">
+            <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-4">
+              <span class="text-[#53d22d] text-sm font-bold tracking-wide">CASINO GAMING</span>
             </div>
+            <h2 class="text-white text-4xl font-black mb-4">Casino Gaming Platform</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FloatingCard
+              v-for="feature in casinoFeatures"
+              :key="feature.id"
+              :icon="feature.icon"
+              :title="feature.title"
+              :description="feature.description"
+            />
           </div>
         </div>
 
         <!-- Additional Gaming Services -->
-        <div class="mb-16">
-          <h2 class="text-white text-3xl font-bold mb-8 text-center">Specialty Gaming Services</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div 
-              v-for="service in additionalServices" 
-              :key="service.id"
-              class="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:bg-gray-800/50 transition-colors text-center"
-            >
-              <span class="material-symbols-outlined text-[#53d22d] text-4xl mb-4 block">{{ service.icon }}</span>
-              <h3 class="text-white text-xl font-bold mb-2">{{ service.title }}</h3>
-              <p class="text-gray-400">{{ service.description }}</p>
+        <div class="mb-24">
+          <div class="text-center mb-12">
+            <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-4">
+              <span class="text-[#53d22d] text-sm font-bold tracking-wide">SPECIALTY SERVICES</span>
             </div>
+            <h2 class="text-white text-4xl font-black mb-4">Specialty Gaming Services</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <FloatingCard
+              v-for="service in additionalServices"
+              :key="service.id"
+              :icon="service.icon"
+              :title="service.title"
+              :description="service.description"
+            />
           </div>
         </div>
 
         <!-- CTA -->
-        <div class="text-center bg-gradient-to-r from-[#53d22d]/20 to-green-600/20 p-12 rounded-2xl">
-          <h2 class="text-white text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <router-link 
-            to="/demo"
-            class="inline-block px-8 py-4 bg-[#53d22d] text-gray-900 font-bold rounded-lg hover:bg-green-400 transition-colors"
-          >
-            Request Demo
-          </router-link>
+        <div class="relative text-center bg-gradient-to-br from-[#53d22d]/20 via-green-600/20 to-[#53d22d]/20 p-16 rounded-3xl overflow-hidden border border-[#53d22d]/30 shadow-2xl">
+          <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM1M2QyMmQiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzAtMC41NTIuNDQ4LTEgMS0xaDEyYy41NTIgMCAxIC40NDggMSAxdjEyYzAgLjU1Mi0uNDQ4IDEtMSAxSDM3Yy0uNTUyIDAtMS0uNDQ4LTEtMXYtMTJ6TTAgMTRjMC0uNTUyLjQ0OC0xIDEtMWgxMmMuNTUyIDAgMSAuNDQ4IDEgMXYxMmMwIC41NTItLjQ0OCAxLTEgMUgxYy0uNTUyIDAtMS0uNDQ4LTEtMXYtMTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+          <div class="relative z-10">
+            <h2 class="text-white text-4xl md:text-5xl font-black mb-6">Ready to Get Started?</h2>
+            <router-link
+              to="/demo"
+              class="inline-block px-10 py-5 bg-gradient-to-r from-[#53d22d] to-green-500 text-gray-900 font-bold rounded-xl hover:shadow-2xl hover:shadow-[#53d22d]/50 transition-all duration-300 transform hover:scale-105 text-lg"
+            >
+              Request Demo
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -91,11 +110,17 @@
 
 <script>
 import Layout from '../components/Layout.vue'
+import ThreeBackground from '../components/ThreeBackground.vue'
+import FloatingCard from '../components/FloatingCard.vue'
 import { useSEO } from '../composables/useSEO.js'
 
 export default {
   name: 'Features',
-  components: { Layout },
+  components: {
+    Layout,
+    ThreeBackground,
+    FloatingCard
+  },
   mounted() {
     const { setSEO } = useSEO()
     setSEO({

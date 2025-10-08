@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/three": "^0.180.0",
+    "three": "^0.180.0",
     "vue": "^3.4.0",
     "vue-router": "^4.5.1"
   },

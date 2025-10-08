@@ -1,92 +1,91 @@
 <template>
   <Layout>
-    <div class="px-10 lg:px-20 xl:px-40 py-12 bg-[#111827]">
-      <div class="max-w-7xl mx-auto">
+    <div class="relative px-10 lg:px-20 xl:px-40 py-12 bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a]">
+      <ThreeBackground />
+      <div class="relative z-10 max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="text-center mb-16">
-          <h1 class="text-white text-5xl font-black mb-6">Simple, Transparent Pricing</h1>
-          <p class="text-gray-300 text-xl">Choose the plan that fits your business size and goals for all gaming services</p>
+        <div class="text-center mb-20 animate-float">
+          <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-6">
+            <span class="text-[#53d22d] text-sm font-bold tracking-wide">PRICING PLANS</span>
+          </div>
+          <h1 class="text-white text-6xl md:text-7xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-100 to-white">Simple, Transparent Pricing</h1>
+          <p class="text-gray-300 text-xl max-w-3xl mx-auto">Choose the plan that fits your business size and goals for all gaming services</p>
         </div>
 
         <!-- Pricing Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div 
-            v-for="plan in pricingPlans" 
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24">
+          <PricingCard
+            v-for="plan in pricingPlans"
             :key="plan.id"
-            class="rounded-xl border bg-gray-900 p-8 relative hover:bg-gray-800/50 transition-colors"
-            :class="plan.popular ? 'border-[#53d22d] scale-105' : 'border-gray-800'"
-          >
-            <div v-if="plan.popular" class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <span class="bg-[#53d22d] text-gray-900 px-4 py-1 rounded-full text-sm font-bold">Most Popular</span>
-            </div>
-            <div class="text-center mb-6">
-              <h3 class="text-white text-2xl font-bold mb-2">{{ plan.name }}</h3>
-              <div class="text-gray-400 mb-4">{{ plan.description }}</div>
-              <div class="text-white">
-                <span class="text-4xl font-bold">{{ plan.price }}</span>
-                <span class="text-gray-400">{{ plan.period }}</span>
-              </div>
-            </div>
-            <ul class="space-y-3 mb-8">
-              <li v-for="feature in plan.features" :key="feature" class="flex items-start gap-2">
-                <span class="material-symbols-outlined text-[#53d22d] text-xl mt-0.5">check_circle</span>
-                <span class="text-gray-300">{{ feature }}</span>
-              </li>
-            </ul>
-            <router-link 
-              to="/contact"
-              class="w-full block py-3 px-6 rounded-lg font-bold transition-colors text-center"
-              :class="plan.popular ? 'bg-[#53d22d] text-gray-900 hover:bg-green-400' : 'bg-gray-800 text-white hover:bg-gray-700'"
-            >
-              Get Started
-            </router-link>
-          </div>
+            :name="plan.name"
+            :price="plan.price"
+            :period="plan.period"
+            :description="plan.description"
+            :features="plan.features"
+            :popular="plan.popular"
+          />
         </div>
 
         <!-- Feature Comparison Table -->
-        <div class="bg-gray-900 p-8 rounded-2xl mb-16">
-          <h2 class="text-white text-3xl font-bold mb-8 text-center">Feature Comparison</h2>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left">
-              <thead>
-                <tr class="border-b border-gray-700">
-                  <th class="text-white font-bold py-4 px-4">Features</th>
-                  <th class="text-white font-bold py-4 px-4 text-center">Starter</th>
-                  <th class="text-white font-bold py-4 px-4 text-center bg-[#53d22d]/10 rounded-t-lg">Professional</th>
-                  <th class="text-white font-bold py-4 px-4 text-center">Enterprise</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="feature in comparisonFeatures" :key="feature.name" class="border-b border-gray-800">
-                  <td class="text-gray-300 py-4 px-4 font-medium">{{ feature.name }}</td>
-                  <td class="py-4 px-4 text-center">
-                    <span v-if="feature.starter === true" class="material-symbols-outlined text-[#53d22d]">check_circle</span>
-                    <span v-else-if="feature.starter === false" class="material-symbols-outlined text-gray-600">cancel</span>
-                    <span v-else class="text-gray-400">{{ feature.starter }}</span>
-                  </td>
-                  <td class="py-4 px-4 text-center bg-[#53d22d]/10">
-                    <span v-if="feature.professional === true" class="material-symbols-outlined text-[#53d22d]">check_circle</span>
-                    <span v-else-if="feature.professional === false" class="material-symbols-outlined text-gray-600">cancel</span>
-                    <span v-else class="text-gray-400">{{ feature.professional }}</span>
-                  </td>
-                  <td class="py-4 px-4 text-center">
-                    <span v-if="feature.enterprise === true" class="material-symbols-outlined text-[#53d22d]">check_circle</span>
-                    <span v-else-if="feature.enterprise === false" class="material-symbols-outlined text-gray-600">cancel</span>
-                    <span v-else class="text-gray-400">{{ feature.enterprise }}</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-sm p-10 rounded-3xl mb-24 border border-gray-800/50 shadow-2xl overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-[#53d22d]/5 rounded-full blur-3xl"></div>
+          <div class="relative z-10">
+            <div class="text-center mb-12">
+              <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-4">
+                <span class="text-[#53d22d] text-sm font-bold tracking-wide">COMPARISON</span>
+              </div>
+              <h2 class="text-white text-4xl font-black mb-2">Feature Comparison</h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead>
+                  <tr class="border-b border-gray-700/50">
+                    <th class="text-white font-bold py-5 px-6 text-lg">Features</th>
+                    <th class="text-white font-bold py-5 px-6 text-center text-lg">Starter</th>
+                    <th class="text-white font-bold py-5 px-6 text-center text-lg bg-[#53d22d]/10 rounded-t-lg">Professional</th>
+                    <th class="text-white font-bold py-5 px-6 text-center text-lg">Enterprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="feature in comparisonFeatures" :key="feature.name" class="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
+                    <td class="text-gray-300 py-5 px-6 font-medium">{{ feature.name }}</td>
+                    <td class="py-5 px-6 text-center">
+                      <span v-if="feature.starter === true" class="material-symbols-outlined text-[#53d22d] text-2xl">check_circle</span>
+                      <span v-else-if="feature.starter === false" class="material-symbols-outlined text-gray-600 text-2xl">cancel</span>
+                      <span v-else class="text-gray-400">{{ feature.starter }}</span>
+                    </td>
+                    <td class="py-5 px-6 text-center bg-[#53d22d]/10">
+                      <span v-if="feature.professional === true" class="material-symbols-outlined text-[#53d22d] text-2xl">check_circle</span>
+                      <span v-else-if="feature.professional === false" class="material-symbols-outlined text-gray-600 text-2xl">cancel</span>
+                      <span v-else class="text-gray-400">{{ feature.professional }}</span>
+                    </td>
+                    <td class="py-5 px-6 text-center">
+                      <span v-if="feature.enterprise === true" class="material-symbols-outlined text-[#53d22d] text-2xl">check_circle</span>
+                      <span v-else-if="feature.enterprise === false" class="material-symbols-outlined text-gray-600 text-2xl">cancel</span>
+                      <span v-else class="text-gray-400">{{ feature.enterprise }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
         <!-- FAQ Section -->
-        <div class="bg-gray-900 p-8 rounded-2xl">
-          <h2 class="text-white text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div v-for="faq in faqs" :key="faq.id" class="border-b border-gray-700 pb-4">
-              <h3 class="text-white font-bold mb-2">{{ faq.question }}</h3>
-              <p class="text-gray-400">{{ faq.answer }}</p>
+        <div class="relative bg-gradient-to-br from-gray-900/80 to-gray-950/80 backdrop-blur-sm p-10 rounded-3xl border border-gray-800/50 shadow-2xl overflow-hidden">
+          <div class="absolute bottom-0 left-0 w-64 h-64 bg-green-600/5 rounded-full blur-3xl"></div>
+          <div class="relative z-10">
+            <div class="text-center mb-12">
+              <div class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-[#53d22d]/10 to-green-600/10 border border-[#53d22d]/20 mb-4">
+                <span class="text-[#53d22d] text-sm font-bold tracking-wide">FAQ</span>
+              </div>
+              <h2 class="text-white text-4xl font-black mb-2">Frequently Asked Questions</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div v-for="faq in faqs" :key="faq.id" class="bg-gray-800/30 rounded-xl p-6 border border-gray-700/50 hover:border-[#53d22d]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#53d22d]/10">
+                <h3 class="text-white font-bold mb-3 text-lg">{{ faq.question }}</h3>
+                <p class="text-gray-400 leading-relaxed">{{ faq.answer }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -97,11 +96,17 @@
 
 <script>
 import Layout from '../components/Layout.vue'
+import ThreeBackground from '../components/ThreeBackground.vue'
+import PricingCard from '../components/PricingCard.vue'
 import { useSEO } from '../composables/useSEO.js'
 
 export default {
   name: 'Pricing',
-  components: { Layout },
+  components: {
+    Layout,
+    ThreeBackground,
+    PricingCard
+  },
   mounted() {
     const { setSEO } = useSEO()
     setSEO({

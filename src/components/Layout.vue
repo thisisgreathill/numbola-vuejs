@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-[#111827]" style='font-family: Manrope, "Noto Sans", sans-serif;'>
+  <div class="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0f172a]" style='font-family: Manrope, "Noto Sans", sans-serif;'>
     <!-- Header -->
-    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-800 px-10 py-3">
+    <header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-800/50 backdrop-blur-xl bg-[#0f172a]/80 px-10 py-4 shadow-lg">
       <div class="flex items-center gap-4 text-white">
         <router-link to="/" class="flex items-center gap-2">
           <svg class="size-8 text-[#53d22d]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -49,15 +49,15 @@
           </router-link>
         </nav>
         <div class="flex gap-2">
-          <router-link 
+          <router-link
             to="/login"
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-gray-800 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-700 transition-colors"
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-11 px-7 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-700/70 hover:border-gray-600 transition-all duration-300"
           >
             <span class="truncate">Login</span>
           </router-link>
-          <router-link 
+          <router-link
             to="/demo"
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-[#53d22d] text-gray-900 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-green-400 transition-colors"
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-11 px-7 bg-gradient-to-r from-[#53d22d] to-green-500 text-gray-900 text-sm font-bold leading-normal tracking-[0.015em] hover:shadow-lg hover:shadow-[#53d22d]/50 transition-all duration-300 transform hover:scale-105"
           >
             <span class="truncate">Get Demo</span>
           </router-link>
@@ -71,7 +71,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 px-10 py-8 mt-auto">
+    <footer class="relative bg-gradient-to-b from-transparent to-[#0f172a] border-t border-gray-800/50 px-10 py-12 mt-auto backdrop-blur-sm">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-center gap-6">
           <!-- Logo and Description -->
@@ -106,8 +106,8 @@
         </div>
         
         <!-- Copyright -->
-        <div class="border-t border-gray-800 pt-4 mt-6 text-center">
-          <p class="text-gray-400">© 2024 Numbola. All rights reserved.</p>
+        <div class="border-t border-gray-800/50 pt-6 mt-8 text-center">
+          <p class="text-gray-400 text-sm">© 2024 Numbola. All rights reserved. Powering the future of iGaming.</p>
         </div>
       </div>
     </footer>
